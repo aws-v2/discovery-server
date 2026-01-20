@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: discovery
+
+server:
+  port: ${SERVER_PORT:8761}
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: ${EUREKA_HOSTNAME:https://aws-prod-latest.onrender.com}
+    prefer-ip-address: false
+
+logging:
+  level:
+    root: WARN
+    "[com.netflix.eureka]": INFO
+    "[com.netflix.discovery]": INFO
