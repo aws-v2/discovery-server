@@ -9,14 +9,20 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: https://${EUREKA_HOSTNAME:discovery-server-latest-6p1n.onrender.com}/eureka/
   server:
-    enable-self-preservation: false
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 60000
   instance:
-    hostname: ${EUREKA_HOSTNAME:aws-prod-latest.onrender.com}
+    hostname: ${EUREKA_HOSTNAME:discovery-server-latest-6p1n.onrender.com}
     prefer-ip-address: false
     non-secure-port-enabled: false
     secure-port-enabled: true
     secure-port: 443
+    home-page-url: https://${EUREKA_HOSTNAME:discovery-server-latest-6p1n.onrender.com}/
+    status-page-url: https://${EUREKA_HOSTNAME:discovery-server-latest-6p1n.onrender.com}/actuator/info
+    health-check-url: https://${EUREKA_HOSTNAME:discovery-server-latest-6p1n.onrender.com}/actuator/health
 
 logging:
   level:
