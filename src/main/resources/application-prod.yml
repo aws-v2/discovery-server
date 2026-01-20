@@ -12,8 +12,11 @@ eureka:
   server:
     enable-self-preservation: false
   instance:
-    hostname: ${EUREKA_HOSTNAME:https://aws-prod-latest.onrender.com}
+    hostname: ${EUREKA_HOSTNAME:aws-prod-latest.onrender.com}
     prefer-ip-address: false
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    secure-port: 443
 
 logging:
   level:
