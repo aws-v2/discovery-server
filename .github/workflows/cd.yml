@@ -28,3 +28,20 @@ jobs:
         tags: qarani/discovery-server:latest
         build-args: |
           SPRING_PROFILES_ACTIVE=prod
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to EC2 via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        passphrase: ${{ secrets.EC2_SSH_PASSPHRASE }}
+        script: |
+          docker pull qarani/discovery-server:latest
+          docker stop discovery-server || true
+          docker rm discovery-server || true
+          docker run -d --name discovery-server -p 8099:8099 qarani/discovery-server:latest
