@@ -44,4 +44,4 @@ jobs:
           docker pull qarani/discovery-server:latest
           docker stop discovery-server || true
           docker rm discovery-server || true
-          docker run -d --name discovery-server -p 8099:8099 qarani/discovery-server:latest
+          docker run -d --name discovery-server --env-file /home/runner/.discovery-server-prod.env -p 8761:8761 qarani/discovery-server:latest

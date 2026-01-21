@@ -51,9 +51,9 @@ USER appuser
 # Expose port
 EXPOSE 8761
 
-# Accept Spring profile as build argument (defaults to dev)
-ARG SPRING_PROFILES_ACTIVE=dev
-ENV SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE
+# Set the active profile (defaults to dev, can be overridden by environment variable)
+ENV APP_PROFILE=dev
+
 
 # Set JVM options
 ENV JAVA_OPTS="-Xms512m -Xmx1024m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/app/logs/heap-dump.hprof"

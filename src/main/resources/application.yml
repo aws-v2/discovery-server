@@ -1,5 +1,5 @@
 # Active Profile (set via environment variable or command line)
 spring:
   profiles:
-    # active: ${SPRING_PROFILES_ACTIVE:dev}
-    active: prod
+    active: ${APP_PROFILE:dev}
+    # active: prod

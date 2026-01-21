@@ -1,16 +1,12 @@
 services:
   discovery:
-    build:
-      context: .
-      args:
-        - SPRING_PROFILES_ACTIVE=prod
     image: amcir-discovery:latest
     container_name: discovery-server
     restart: always
     ports:
       - "8761:8761"
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
+      - APP_PROFILE=prod
       - SERVER_PORT=8761
       - EUREKA_HOSTNAME=discovery-server
       # Overriding some prod values for standard container usage (local or VPS)
