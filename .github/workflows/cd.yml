@@ -45,4 +45,4 @@ jobs:
             docker pull qarani/discovery-server:latest
             docker stop discovery-server || true
             docker rm discovery-server || true
-            docker run -d --name discovery-server --env-file /home/ubuntu/.discovery-server-prod.env -p 8761:8761 qarani/discovery-server:latest
+            docker run -d --name discovery-server --network mini-aws-network --env-file /home/ubuntu/.discovery-server-prod.env -p 8761:8761 qarani/discovery-server:latest
