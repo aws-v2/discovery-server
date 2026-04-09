@@ -37,12 +37,7 @@ jobs:
       - name: Install Tailscale
         run: |
           curl -fsSL https://tailscale.com/install.sh | sh
-          
-          sudo tailscale up \
-            --authkey=${{ secrets.TAILSCALE_AUTH_KEY }} \
-            --hostname=github-actions \
-            --accept-dns=false \
-            --ssh
+          sudo tailscale up --authkey ${{ secrets.TAILSCALE_AUTH_KEY }}
 
       - name: Deploy to Staging via SSH over Tailscale
         uses: appleboy/ssh-action@v1.0.3
