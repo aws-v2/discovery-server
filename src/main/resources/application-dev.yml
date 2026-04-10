@@ -1,22 +1,33 @@
+server:
+  port: ${DEV_SERVER_PORT:8761}
+
 spring:
   application:
     name: discovery
-
-server:
-  port: ${SERVER_PORT:8761}
 
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: https://${DEV_EUREKA_URL:localhost}/eureka/
   server:
-    enable-self-preservation: false
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 60000
   instance:
-    hostname: ${EUREKA_HOSTNAME:localhost}
+    hostname: ${DEV_EUREKA_URL:localhost}
     prefer-ip-address: false
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    secure-port: 443
+    home-page-url: https://${DEV_EUREKA_URL:localhost}/
+    status-page-url: https://${DEV_EUREKA_URL:localhost}/actuator/info
+    health-check-url: https://${DEV_EUREKA_URL:localhost}/actuator/health
+
 
 logging:
   level:
-    root: INFO
+    root: DEBUG
     "[com.netflix.eureka]": DEBUG
     "[com.netflix.discovery]": DEBUG
+
