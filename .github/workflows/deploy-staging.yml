@@ -49,4 +49,11 @@ jobs:
             docker pull qarani/discovery-server:staging
             docker stop discovery-server-staging || true
             docker rm discovery-server-staging || true
-            docker run -d --name discovery-server-staging -p 8761:8761 qarani/discovery-server:staging
+            docker run -d \
+              --name discovery-server-staging \
+              --network aws-staging-network \
+              -p 8761:8761 \
+              -e SPRING_PROFILES_ACTIVE=staging \
+              -e STAGING_SERVER_PORT=8761 \
+              -e STAGING_EUREKA_URL=discovery-server \
+              qarani/discovery-server:staging
