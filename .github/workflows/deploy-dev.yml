@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "dev", "develop", "main", "staging" ]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -21,3 +25,15 @@ jobs:
 
     - name: Build with Maven
       run: ./mvnw clean package
+
+    - name: Create Pull Request to Staging
+      if: github.event_name == 'push' && (github.ref_name == 'dev' || github.ref_name == 'develop')
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh pr create \
+          --base staging \
+          --head ${{ github.ref_name }} \
+          --title "Merge ${{ github.ref_name }} into staging" \
+          --body "Automated PR created by GitHub Actions after successful CI on ${{ github.ref_name }}" \
+          || echo "PR already exists or error occurred"
