@@ -10,4 +10,19 @@ class DiscoveryApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void sanityCheckTest() {
+		org.junit.jupiter.api.Assertions.assertTrue(true, "Sanity check should pass");
+	}
+
+	@Test
+	void basicMathTest() {
+		org.junit.jupiter.api.Assertions.assertEquals(4, 2 + 2, "Math should work");
+	}
+
+	@Test
+	void stringManipulationTest() {
+		String result = "hello" + " " + "world";
+		org.junit.jupiter.api.Assertions.assertEquals("hello world", result);
+	}
 }
