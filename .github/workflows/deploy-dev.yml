@@ -47,4 +47,4 @@ jobs:
               --body "✅ All tests passed on dev. Auto-generated PR."
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT}} 
+          GH_TOKEN: ${{ secrets.GH_PAT}} 
