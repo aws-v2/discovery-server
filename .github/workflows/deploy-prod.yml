@@ -46,7 +46,7 @@ jobs:
             docker stop discovery-server-prod || true
             docker rm discovery-server-prod || true
             docker run -d \
-            --name discovery-server \
+            --name discovery-server-prod \
             --network aws-prod-network \
             -p 8761:8761 \
             -e SPRING_PROFILES_ACTIVE=prod \
