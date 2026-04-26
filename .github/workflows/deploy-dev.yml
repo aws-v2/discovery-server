@@ -54,40 +54,8 @@ jobs:
             DEV_SERVER_PORT=8761
             DEV_EUREKA_URL=localhost
 
-  dev-deploy:
-    needs: dev-build-and-push
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Tailscale
-        run: |
-          curl -fsSL https://tailscale.com/install.sh | sh
-          sudo tailscale up --authkey ${{ secrets.TAILSCALE_AUTH_KEY }}
-
-      - name: Deploy to Dev via SSH over Tailscale
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.DEV_HOST }}
-          username: ${{ secrets.DEV_USERNAME }}
-          key: ${{ secrets.DEV_SSH_KEY }}
-          script: |
-            docker pull qarani/discovery-server:dev
-            docker stop discovery-server-dev || true
-            docker rm discovery-server-dev || true
-            docker run -d \
-              --name discovery-server-dev \
-              --network aws-dev-network \
-              -p 8761:8761 \
-              -e SPRING_PROFILES_ACTIVE=dev \
-              -e DEV_SERVER_PORT=8761 \
-              -e DEV_EUREKA_URL=discovery-server-dev \
-              qarani/discovery-server:dev
-    
-
   dev-open-pr-to-staging:
-    needs: dev-deploy
+    needs: dev-build-and-push
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
