@@ -80,6 +80,7 @@ jobs:
               qarani/discovery-server:staging
 
   staging-open-pr-to-main:
+    if: github.event_name == 'push'
     needs: staging-deploy
     runs-on: ubuntu-latest
     steps:
