@@ -74,10 +74,10 @@ jobs:
           script: |
             set -e
 
-            echo "Pulling latest image..."
+            echo "Pulling latest image......"
             docker pull qarani/discovery-server:prod
 
-            echo "Removing old service..."
+            echo "Removing old service....."
             docker service rm discovery-server-prod || true
 
             echo "Deploying new Swarm service on java-vm..."
