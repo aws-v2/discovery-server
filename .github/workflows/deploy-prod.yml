@@ -80,14 +80,14 @@ jobs:
             echo "Removing old service..."
             docker service rm discovery-server-prod || true
 
-            echo "Deploying new Swarm service..."
+            echo "Deploying new Swarm service on java-vm..."
+
             docker service create \
               --name discovery-server-prod \
               --network prod-overlay-net \
-              -p 8761:8761 \
+              --publish published=8761,target=8761 \
+              --constraint 'node.hostname==java-vm' \
               --env SPRING_PROFILES_ACTIVE=prod \
               --env SERVER_PORT=8761 \
               --env EUREKA_URL=http://discovery-server-prod:8761 \
               qarani/discovery-server:prod
-
-            echo "Deployment complete."
