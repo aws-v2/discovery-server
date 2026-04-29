@@ -72,7 +72,6 @@ jobs:
           username: ${{ secrets.PROD_USERNAME }}
           key: ${{ secrets.PROD_SSH_KEY }}
           script: |
-            docker network create --driver overlay prod-overlay-net || true 
             set -e
 
             echo "Pulling latest image..."
