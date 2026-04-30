@@ -84,9 +84,8 @@ jobs:
 
             docker service create \
               --name discovery-server-prod \
-              --network prod-overlay-net \
+              --network aws-prod-network \
               --publish published=8761,target=8761 \
-              --constraint 'node.hostname==java-vm' \
               --env SPRING_PROFILES_ACTIVE=prod \
               --env PROD_SERVER_PORT=8761 \
               --env PROD_EUREKA_URL=discovery-server-prod \
