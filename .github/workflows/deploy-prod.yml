@@ -10,6 +10,7 @@ jobs:
   prod-test:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'pull_request'
+
     steps:
       - uses: actions/checkout@v4
 
@@ -22,6 +23,7 @@ jobs:
 
       - name: Run tests
         run: mvn clean
+
 
   prod-build-and-push:
     needs: prod-test
@@ -49,32 +51,44 @@ jobs:
           build-args: |
             SPRING_PROFILES_ACTIVE=prod
 
+
   prod-deploy:
     needs: prod-build-and-push
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploy to prod via SSH
+      - uses: actions/checkout@v4
+
+      - name: Install Tailscale
+        run: |
+          curl -fsSL https://tailscale.com/install.sh | sh
+          sudo tailscale up --authkey ${{ secrets.TAILSCALE_AUTH_KEY }}
+
+      - name: Deploy to Production via SSH over Tailscale
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.PROD_HOST }}
           username: ${{ secrets.PROD_USERNAME }}
           key: ${{ secrets.PROD_SSH_KEY }}
-          passphrase: ${{ secrets.PROD_SSH_PASSPHRASE }}
           script: |
-            docker network create aws-prod-network || true
+            set -e
+
+            echo "Pulling latest image......"
             docker pull qarani/discovery-server:prod
-            docker stop discovery-server-prod || true
-            docker rm discovery-server-prod || true
-            docker run -d \
-            --name discovery-server-prod \
-            --network aws-prod-network \
-            -p 8761:8761 \
-            -e SPRING_PROFILES_ACTIVE=prod \
-            -e PROD_SERVER_PORT=8761 \
-            -e PROD_EUREKA_URL=discovery-server-prod \
-            qarani/discovery-server:prod
 
+            echo "Removing old service....."
+            docker service rm discovery-server-prod || true
 
+            echo "Deploying new Swarm service on java-vm..."
 
+            docker service create \
+              --name discovery-server-prod \
+              --network aws-prod-network \
+              --publish published=8761,target=8761 \
+              --env SPRING_PROFILES_ACTIVE=prod \
+              --env PROD_SERVER_PORT=8761 \
+              --env PROD_EUREKA_URL=discovery-server-prod \
+              qarani/discovery-server:prod
 
+            echo "Deployment complete."

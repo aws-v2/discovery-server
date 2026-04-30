@@ -10,23 +10,14 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: https://${PROD_EUREKA_URL}/eureka/
-  server:
-    enable-self-preservation: true
-    eviction-interval-timer-in-ms: 60000
+      defaultZone: http://${PROD_EUREKA_URL:discovery-server-prod}:8761/eureka/
+
   instance:
-    hostname: ${PROD_EUREKA_URL}
+    hostname: ${PROD_EUREKA_URL:discovery-server-prod}
     prefer-ip-address: false
-    non-secure-port-enabled: false
-    secure-port-enabled: true
-    secure-port: 443
-    home-page-url: https://${PROD_EUREKA_URL}/
-    status-page-url: https://${PROD_EUREKA_URL}/actuator/info
-    health-check-url: https://${PROD_EUREKA_URL}/actuator/health
 
 logging:
   level:
     root: WARN
     "[com.netflix.eureka]": INFO
     "[com.netflix.discovery]": INFO
-
