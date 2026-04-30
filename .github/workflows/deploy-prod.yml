@@ -73,15 +73,11 @@ jobs:
           key: ${{ secrets.PROD_SSH_KEY }}
           script: |
             set -e
-
             echo "Pulling latest image......"
             docker pull qarani/discovery-server:prod
-
             echo "Removing old service....."
             docker service rm discovery-server-prod || true
-
             echo "Deploying new Swarm service on java-vm..."
-
             docker service create \
               --name discovery-server-prod \
               --network aws-prod-network \
