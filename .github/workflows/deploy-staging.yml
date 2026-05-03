@@ -67,6 +67,7 @@ jobs:
           username: ${{ secrets.STAGING_USERNAME }}
           key: ${{ secrets.STAGING_SSH_KEY }}
           script: |
+            docker network create aws-staging-network || true
             docker pull qarani/discovery-server:staging
             docker stop discovery-server-staging || true
             docker rm discovery-server-staging || true
