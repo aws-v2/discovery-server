@@ -74,6 +74,7 @@ jobs:
           script: |
             set -e
             echo "Pulling latest image......"
+            docker network create --driver overlay aws-prod-network || true
             docker pull qarani/discovery-server:prod
             echo "Removing old service....."
             docker service rm discovery-server-prod || true
