@@ -1,0 +1,58 @@
+2026.07.24 08:45:25 INFO  Started: Metals version 1.6.7 in folders '/home/martin/Documents/aws-v4/dev/Java/discovery-server' for client Visual Studio Code 1.121.0.
+2026.07.24 08:45:25 INFO  Memory monitor started
+2026.07.24 08:45:27 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.07.24 08:45:27 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.24 08:45:28 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+Jul 24, 2026 8:45:29 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3
+2026.07.24 08:45:29 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.24 08:45:29 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+Jul 24, 2026 8:45:29 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2
+2026.07.24 08:45:29 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+Jul 24, 2026 8:45:30 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 8
+2026.07.24 08:45:29 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.24 08:45:29 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+Jul 24, 2026 8:45:30 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 11
+2026.07.24 08:46:25 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.24 12:40:31 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.24 12:40:35 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.24 12:40:40 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.24 12:40:49 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.24 12:40:59 INFO  Shutting down server
+2026.07.24 12:40:59 INFO  Memory monitor stopped
+2026.07.24 12:40:59 INFO  shutting down Metals
+2026.07.24 12:40:59 INFO  Exiting server
+2026.07.24 12:40:59 ERROR Unexpected error initializing server: 
+org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Request window/showMessageRequest failed with message: Canceled
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:214)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:198)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:189)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:97)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+
+2026.07.25 20:21:39 INFO  Started: Metals version 1.6.7 in folders '/home/martin/Documents/aws-v4/dev/Java/discovery-server' for client Visual Studio Code 1.121.0.
+2026.07.25 20:21:40 INFO  time: initialize in 0.26s
+2026.07.25 20:21:39 INFO  Memory monitor started
+2026.07.25 20:21:44 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.07.25 20:21:44 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.25 20:21:47 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+2026.07.25 20:25:22 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+Jul 25, 2026 8:25:22 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9
+2026.07.25 20:25:24 INFO  no build target found for /home/martin/Documents/aws-v4/dev/Java/discovery-server/src/main/java/org/serwin/discovery/DiscoveryApplication.java. Using fallback presentation compiler.
+Jul 26, 2026 8:41:02 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Jul 26, 2026 8:56:13 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.07.26 08:57:25 INFO  Shutting down server
+2026.07.26 08:57:25 INFO  Memory monitor stopped
+2026.07.26 08:57:25 INFO  shutting down Metals
+2026.07.26 08:57:25 INFO  Exiting server
